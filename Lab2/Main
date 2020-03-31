@@ -1,0 +1,196 @@
+import static java.nio.file.StandardOpenOption.APPEND;
+
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
+
+
+public class Main 
+{
+    public static void main(String[] args) throws IOException 
+    {
+    	
+    	Scanner scan = new Scanner(System.in);
+        System.out.print("Enter your option: ");
+        int option = scan.nextInt();
+        
+        // Encodes the text file
+        
+        if(option == 1)
+        {
+	        Text_Encoder continut;
+	        continut = new Text_Encoder(' ');
+	
+	        File fin=new File("C:\\OOP Java\\Criptare avansata\\src\\input_text.txt");     //Creation of File Descriptor for input file
+	        FileReader fr=new FileReader(fin);   //Creation of File Reader object
+	        BufferedReader br=new BufferedReader(fr);  //Creation of BufferedReader object
+	        int c = 0;
+	
+	        while((c = br.read()) != -1)         //Read char by Char
+	        {
+	            char character = (char) c;          //converting integer to char
+	            continut.setContinut(character);
+	            continut.encoder();
+	            Path p = Paths.get("C:\\OOP Java\\Criptare avansata\\src\\encoded_txt.txt");
+	            try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(p, APPEND))) 
+	            {
+	                out.write(continut.getContinut());
+	                System.out.print(continut.getContinut());
+	            } 
+	            catch (IOException x) 
+	            {
+	                System.err.println(x);
+	            }
+	        }
+	        System.out.println();
+	        br.close();
+        }
+        else
+        	
+        	// Decodes the text file
+        	
+        	if(option == 2)
+        {
+        
+	        Text_Decoder input;
+	        input = new Text_Decoder(' ');
+	
+	        File gin=new File("C:\\OOP Java\\Criptare avansata\\src\\encoded_txt.txt");     //Creation of File Descriptor for input file
+	        FileReader gr=new FileReader(gin);   //Creation of File Reader object
+	        BufferedReader buff=new BufferedReader(gr);  //Creation of BufferedReader object
+	        int w = 0;
+	        while((w = buff.read()) != -1)         //Read char by Char
+	        {
+	            char character1 = (char) w;          //converting integer to char
+	            input.setContinut(character1);
+	            input.decoder();
+	            System.out.print(input.getContinut());
+	        }
+	        buff.close();
+        }
+        	else
+        		
+        		//	Encodes the binary file
+        		
+        		if(option == 3)
+        		{
+        			Binary_Encoder input2;
+        	        input2 = new Binary_Encoder(' ');
+        	
+        	        File hin=new File("C:\\OOP Java\\Criptare avansata\\src\\input.bin");     //Creation of File Descriptor for input file
+        	        FileReader hr=new FileReader(hin);   //Creation of File Reader object
+        	        BufferedReader buffr=new BufferedReader(hr);  //Creation of BufferedReader object
+        	        int q = 0;
+        	
+        	        while((q = buffr.read()) != -1)         //Read char by Char
+        	        {
+        	            char character2 = (char) q;          //converting integer to char
+        	            input2.setContinut(character2);
+        	            input2.encoder();
+        	            Path p = Paths.get("C:\\OOP Java\\Criptare avansata\\src\\encoded_text.bin");
+        	            try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(p, APPEND))) 
+        	            {
+        	                out.write(input2.getContinut());
+        	                System.out.print(input2.getContinut());
+        	            } 
+        	            catch (IOException x) 
+        	            {
+        	                System.err.println(x);
+        	            }
+        	        }
+        	        System.out.println();
+        	        buffr.close();	
+        		}
+        		else
+        			
+        			// Decodes the binary file
+        			
+        			if(option == 4)
+        			{
+        				Binary_Decoder input3;
+        		        input3 = new Binary_Decoder(' ');
+        		
+        		        File jin=new File("C:\\OOP Java\\Criptare avansata\\src\\encoded_txt.txt");     //Creation of File Descriptor for input file
+        		        FileReader jr=new FileReader(jin);   //Creation of File Reader object
+        		        BufferedReader buffread=new BufferedReader(jr);  //Creation of BufferedReader object
+        		        int e = 0;
+        		        while((e = buffread.read()) != -1)         //Read char by Char
+        		        {
+        		            char character3 = (char) e;          //converting integer to char
+        		            input3.setContinut(character3);
+        		            input3.decoder();
+        		            System.out.print(input3.getContinut());
+        		        }
+        		        buffread.close();
+        			}
+        			else
+        				
+        				// Encodes both files
+        				
+        				if(option == 5)
+        				{
+        					Text_Encoder input4;
+        					Binary_Encoder input5;
+        			        input4 = new Text_Encoder(' ');
+        			        input5 = new Binary_Encoder(' ');
+        			        File ffin=new File("C:\\OOP Java\\Criptare avansata\\src\\input_text.txt");     //Creation of File Descriptor for input file
+        			        FileReader ffr=new FileReader(ffin);   //Creation of File Reader object
+        			        BufferedReader bbr=new BufferedReader(ffr);  //Creation of BufferedReader object
+        			        
+        			        File hhin=new File("C:\\OOP Java\\Criptare avansata\\src\\input.bin");     //Creation of File Descriptor for input file
+                	        FileReader hhr=new FileReader(hhin);   //Creation of File Reader object
+                	        BufferedReader buffrd=new BufferedReader(hhr);  //Creation of BufferedReader object
+        			        
+        			        int r = 0;
+        			        while((r = bbr.read()) != -1)         //Read char by Char
+                	        {
+                	            char character4 = (char) r;				//converting integer to char
+                	            
+                	            input4.setContinut(character4);
+                	            input4.encoder();
+                	            Path p = Paths.get("C:\\OOP Java\\Criptare avansata\\src\\encoded_txt.txt");
+                	            try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(p, APPEND))) 
+                	            {
+                	                out.write(input4.getContinut());
+                	                System.out.print(input4.getContinut());
+                	            } 
+                	            catch (IOException x) 
+                	            {
+                	                System.err.println(x);
+                	            }
+                	        }
+        			        bbr.close();
+        			        System.out.println();
+        			        int t=0;
+        			        while((t = buffrd.read()) != -1)   
+        			        {
+                	            char character5 = (char) t;
+                	            input5.setContinut(character5);
+                	            input5.encoder();
+                	            Path path = Paths.get("C:\\OOP Java\\Criptare avansata\\src\\encoded_text.bin");
+                	            try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(path, APPEND))) 
+                	            {
+                	                out.write(input5.getContinut());
+                	                System.out.print(input5.getContinut());
+                	            } 
+                	            catch (IOException x) 
+                	            {
+                	                System.err.println(x);
+                	            }
+                	            
+                	        }
+                	        System.out.println();
+                	        buffrd.close();
+                	        
+        				}
+    }
+}
+
+
