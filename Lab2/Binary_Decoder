@@ -1,0 +1,20 @@
+
+public class Binary_Decoder {
+	private char continut;
+	Binary_Decoder(char _continut)
+	{
+		this.continut = _continut;
+	}
+	public void setContinut(char _continut)
+	{
+		this.continut = _continut;
+	}
+	public char getContinut()
+	{
+		return this.continut;
+	}
+	public void decoder()
+    {
+	 this.continut = (char)(this.continut -1);
+    }
+}
