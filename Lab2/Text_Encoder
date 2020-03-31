@@ -1,0 +1,22 @@
+
+public class Text_Encoder  {
+
+	private char continut;
+	Text_Encoder(char _continut)
+	{
+		this.continut = _continut;
+	}
+	public void setContinut(char _continut)
+	{
+		this.continut = _continut;
+	}
+	public char getContinut()
+	{
+		return this.continut;
+	}
+	 public void encoder()
+	    {
+		 this.continut = (char)(this.continut +1);
+	    }
+
+}
