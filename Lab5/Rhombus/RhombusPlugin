@@ -1,0 +1,22 @@
+
+import Interfaces.IPluginsAppPlugin;
+import Interfaces.IShape;
+
+public class RhombusPlugin implements IPluginsAppPlugin {
+
+    @Override
+    public String getUniqueNameText() {
+        return "RhombusPlugin";
+    }
+
+    @Override
+    public String getDisplayText() {
+        return "Rhombus";
+    }
+
+    @Override
+    public IShape getShape() {
+        return new Rhombus();
+    }
+    
+}
