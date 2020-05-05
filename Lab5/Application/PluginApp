@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+
+import Interfaces.IShape;
+public class PluginApp {
+	private static Menu initializeMainMenu()
+	{
+	 	Circle t;
+	    t = new Circle();
+	    Square t1;
+	    t1 = new Square();
+	    Triangle t2;
+	    t2 = new Triangle();
+	    Ellipse t3;
+	    t3 = new Ellipse();
+	    Rhombus t4;
+	    t4 = new Rhombus();
+		ArrayList<IMenuItem> mainMenuItems = new ArrayList<IMenuItem>();
+	    ArrayList<IMenuItem> addMenuItems = new ArrayList<IMenuItem>();
+	    ArrayList<IMenuItem> paintMenuItems = new ArrayList<IMenuItem>();
+	    ArrayList<IShape> shapeslist = new ArrayList<IShape>();
+	    addMenuItems.add(new MenuItem("Circle", 1, (parameters)-> {shapeslist.add(t);}));
+	    addMenuItems.add(new MenuItem("Square", 2,(parameters)->{shapeslist.add(t1);}));
+	    addMenuItems.add(new MenuItem("Triangle",3,(parameters)->{shapeslist.add(t2);}));
+	    addMenuItems.add(new MenuItem("Ellipse", 4, (parameters)-> {shapeslist.add(t3);}));
+	    addMenuItems.add(new MenuItem("Rhombus", 5, (parameters)-> {shapeslist.add(t4);}));
+	    paintMenuItems.add(new MenuItem("Circle", 1, (parameters)-> {t.draw();}));
+	    paintMenuItems.add(new MenuItem("Square", 2, (parameters)-> {t1.draw();}));
+	    paintMenuItems.add(new MenuItem("Triangle", 3, (parameters)-> {t2.draw();}));
+	    paintMenuItems.add(new MenuItem("Ellipse", 4, (parameters)-> {t3.draw();}));
+	    paintMenuItems.add(new MenuItem("Rhombus", 5, (parameters)-> {t4.draw();}));
+	   
+	    mainMenuItems.add(new Menu("Adaugare", 1,addMenuItems));
+		mainMenuItems.add(new Menu("Afisare", 2, paintMenuItems));
+	    
+	    return new Menu("Main Menu", 0, mainMenuItems); 
+	    
+	    
+	}
+
+
+    public static void main(String[] args)
+    {
+        PluginManager pluginMan = new PluginManager();
+       
+        ApplicationMenu menu = new ApplicationMenu(pluginMan);
+        menu.load();
+        Menu mainMenu = initializeMainMenu();           
+        mainMenu.execute();   
+    }
+    
+}
