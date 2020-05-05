@@ -1,6 +1,0 @@
-package Interfaces;
-public interface IPluginsAppPlugin {
-     String getUniqueNameText();
-     String getDisplayText();
-     IShape getShape();    
-}
