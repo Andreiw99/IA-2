@@ -1,0 +1,16 @@
+
+import Interfaces.IShape;
+
+public class Rhombus implements IShape {
+
+    @Override
+    public void draw() {
+        System.out.println("This is a rhombus");
+    }
+
+    @Override
+    public void read() {
+       System.out.println("read rhombus");
+    }
+    
+}
