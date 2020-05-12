@@ -1,0 +1,22 @@
+
+import Interfaces.IPluginsAppPlugin;
+import Interfaces.IShape;
+
+public class EllipsePlugin implements IPluginsAppPlugin {
+
+    @Override
+    public String getUniqueNameText() {
+        return "EllipsePlugin";
+    }
+
+    @Override
+    public String getDisplayText() {
+        return "Ellipse";
+    }
+
+    @Override
+    public IShape getShape() {
+        return new Ellipse();
+    }
+    
+}
