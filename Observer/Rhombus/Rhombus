@@ -1,0 +1,25 @@
+
+import java.util.Scanner;
+
+import Interfaces.IShape;
+
+public class Rhombus implements IShape {
+	int a,b;
+    @Override
+    public void draw() {
+        System.out.println("This is a rhombus with area: " + this.Area());
+    }
+
+    @Override
+    public void read() {
+    	Scanner scan = new Scanner(System.in);
+    	System.out.println("Insert diagonals: ");
+        a = scan.nextInt();
+        b = scan.nextInt();
+    }
+	@Override
+	public float Area() {
+		return (a*b)/2;
+	}
+    
+}
