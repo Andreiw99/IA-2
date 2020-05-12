@@ -1,0 +1,27 @@
+
+import java.util.Scanner;
+
+import Interfaces.IShape;
+
+public class Ellipse implements IShape {
+	private int a,b;
+    @Override
+    public void draw() {
+        System.out.println("This is an ellipse with area: " + this.Area());
+    }
+
+    @Override
+    public void read() {
+    	 Scanner scan = new Scanner (System.in);
+         System.out.println("Insert semiaxes: ");
+         a = scan.nextInt();
+         b = scan.nextInt();
+         
+    }
+
+	@Override
+	public float Area() {
+		return (float) (3.14 * a * b);
+	}
+    
+}
