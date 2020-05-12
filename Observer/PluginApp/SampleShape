@@ -1,0 +1,70 @@
+import java.util.ArrayList;
+
+import Interfaces.IShape;
+
+import Interfaces.IObserver;
+public class SampleShape  implements IShape, IObserver {
+
+	private ArrayList <IShape> shapes = new ArrayList<IShape>();
+	private int height = 10;
+	private int width = 10;
+	private float sum = 0;
+    @Override
+    public void draw() {
+        if(shapes.isEmpty() )
+        	System.out.println("Board is empty");
+        else
+        {
+        	
+        	for(IShape shape:shapes)
+        	{
+        		
+        		
+        		shape.draw();
+        	}
+        	System.out.println("Board area is: " + getboardArea());
+        }
+        
+    }
+
+    @Override
+    public void read() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public int getboardArea()
+    {
+    	return height * width;
+    }
+    
+    public void add(IShape shape)
+    {
+    	if(getboardArea() > shape.Area())
+    	{
+    		shapes.add(shape);
+    		sum = sum + shape.Area();	
+    	}
+    	else
+    	{
+    		update();
+    		shapes.add(shape);
+    		sum = sum + shape.Area();
+    	}
+    }
+
+	
+	
+
+	@Override
+	public void update() {
+		this.height = 10 * this.height;
+		this.width = 10 * this.width;
+	}
+
+    
+    
+	@Override
+	public float Area() {
+		return 0;
+	}
+    
+}
