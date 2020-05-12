@@ -1,0 +1,26 @@
+
+import java.util.Scanner;
+
+import Interfaces.IShape;
+
+public class Square implements IShape {
+	private int lenght;
+    @Override
+    public void draw() {
+        System.out.println("This is a square with area: " + this.Area());
+    }
+
+    @Override
+    public void read() {
+    	  Scanner scan = new Scanner (System.in);
+    	  System.out.println("Insert lenght: ");
+    	  lenght = scan.nextInt();
+    }
+
+	@Override
+	public float Area() {
+		
+		return lenght*lenght;
+	}
+    
+}
