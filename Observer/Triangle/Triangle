@@ -1,0 +1,29 @@
+
+import java.util.Scanner;
+
+import Interfaces.IShape;
+
+public class Triangle implements IShape
+{
+	private int a,b,c;
+	@Override
+	public void draw() {
+		System.out.println("This is a triangle with area: "+ this.Area());
+		
+	}
+
+	@Override
+	public void read() {
+		Scanner scan = new Scanner(System.in);
+    	System.out.println("Insert edges: ");
+        a = scan.nextInt();
+        b = scan.nextInt();
+		c = scan.nextInt();
+	}
+
+	@Override
+	public float Area() {
+		return ((a+b+c)/2)*(((a+b+c)/2)-a)*(((a+b+c)/2)-b)*(((a+b+c)/2)-c);
+	}
+	
+}
