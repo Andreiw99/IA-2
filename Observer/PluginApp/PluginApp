@@ -1,0 +1,34 @@
+import java.util.ArrayList;
+
+import Interfaces.IShape;
+public class PluginApp {
+	
+	static SampleShape board = new SampleShape();
+
+	private static Menu initializeMainMenu()
+	{
+		ArrayList<IMenuItem> mainMenuItems = new ArrayList<IMenuItem>(); 	
+	    mainMenuItems.add(new MenuItem("Add", 1,(parameters)->{
+	    	PluginManager pluginMan = new PluginManager();
+	    	ApplicationMenu menu = new ApplicationMenu(pluginMan);
+	    	menu.load(board);
+	    	menu.execute();
+	    }));
+		mainMenuItems.add(new MenuItem("Draw", 2, (parameters)->{
+			board.draw();
+		}));
+	    
+	    return new Menu("Main Menu", 0, mainMenuItems); 
+	    
+	    
+	}
+
+
+    public static void main(String[] args)
+    {
+       Menu mainMenu = initializeMainMenu();
+       mainMenu.execute();
+      
+    }
+    
+}
